@@ -11,7 +11,8 @@ function Modal({ note, onClose, onSave }: ModalProps) {
   const [tagline, setTagline] = useState(note.tagline);
   const [body, setBody] = useState(note.body);
   const handleSave = () => {
-    onSave({ ...note, title, tagline, body });
+    const encodedBody = body.replace(/\n/g, "<br>");
+    onSave({ ...note, title, tagline, body:encodedBody });
     onClose();
   };
   return (

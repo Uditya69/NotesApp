@@ -72,19 +72,24 @@ function App() {
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
-    <div className=" w-[80vw] flex flex-col m-auto items-center justify-between h-screen p-5">
+    <div className=" w-[80vw] flex flex-col m-auto items-center justify-between h-screen p-5 ">
       <div className=" flex flex-row justify-between items-center mx-auto w-full px-0 gap-2 mt-0">
-
         <h1 className=" text-2xl text-blue-100"> Sticky Notes</h1>
-        <button onClick={handleAdd} className="border border-blue-600 hover:border-blue-400 border-opacity-55 p-2 rounded-md flex flex-row items-center gap-2  transition duration-300 ease-in-out">
-          <p>
-            Add Note
-          </p>
+        <button
+          onClick={handleAdd}
+          className="border border-blue-600 hover:border-blue-400 border-opacity-55 p-2 rounded-md flex flex-row items-center gap-2  transition duration-300 ease-in-out"
+        >
+          <p>Add Note</p>
           <BiPencil className="" size={20} />
         </button>
       </div>
       <div className="w-full">
-        <ToastContainer theme="dark" autoClose={1000} hideProgressBar transition={Zoom} />
+        <ToastContainer
+          theme="dark"
+          autoClose={1000}
+          hideProgressBar
+          transition={Zoom}
+        />
 
         <NotesList
           notes={currentNotes}
@@ -100,10 +105,19 @@ function App() {
           />
         )}
       </div>
-      <div className=" flex flex-row gap-2">
-        {Array.from({ length: Math.ceil(sortedNotes.length / notesPerPage) }, (_, i) => (
-          <button key={i} onClick={() => paginate(i + 1)} className=" border border-gray-800 p-1 px-2 rounded-md bg-zinc-800 hover:bg-zinc-700 transition duration-300 ease-in-out">{i + 1}</button>
-        ))}
+      <div className=" flex flex-row gap-2 p-5 pb-10 ">
+        {Array.from(
+          { length: Math.ceil(sortedNotes.length / notesPerPage) },
+          (_, i) => (
+            <button
+              key={i}
+              onClick={() => paginate(i + 1)}
+              className=" border border-gray-800 p-1 px-2 rounded-md bg-zinc-800 hover:bg-zinc-700 transition duration-300 ease-in-out"
+            >
+              {i + 1}
+            </button>
+          )
+        )}
       </div>
     </div>
   );

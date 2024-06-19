@@ -57,8 +57,7 @@ function Note({ note, onClick, onPin, onDelete }: NoteProps) {
           <p>{note.tagline}</p>
         </div>
       </div>
-      <p
-        className="p-3 min-h-[10vh]">{note.body}</p>
+      <div className="p-3 min-h-[10vh]" dangerouslySetInnerHTML={{ __html: note.body }}/>
 
     </div>
   );
